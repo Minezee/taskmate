@@ -4,46 +4,77 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins';
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    /* Chrome all / Safari all */
-    -moz-user-select: none;
-    /* Firefox all */
-    -ms-user-select: none;
-    /* IE 10+ */
-    user-select: none;
-    /* Likely future */
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins';
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
 }
 
-html{
+/*clear select highlight for mobile*/
+@layer base {
+  html {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
+html {
   @apply text-[8px] md:text-[16px]
 }
 
-.auth-button{
-  @apply bg-blue-500 text-white rounded-full px-10 py-2 mt-6 md:mt-12 border-[1px] border-gray-400 hover:opacity-90
+ol {
+  list-style: none;
+  counter-reset: my-counter;
 }
 
-.bg-shadow{
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.981) 0%, rgba(0, 0, 0, 0.807) 0%, rgba(0,212,255,0) 100%);
+ul {
+  list-style-type: disc;
 }
 
-.sm-notes{
+li::before {
+  content: counter(my-counter) ". ";
+  counter-increment: my-counter;
+}
+
+.auth-button {
+  @apply bg-blue-500 text-2xl text-white rounded-full px-10 py-2 mt-6 md:mt-12 border-[1px] border-gray-400 hover:opacity-90
+}
+
+.bg-shadow {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.981) 0%, rgba(0, 0, 0, 0.807) 0%, rgba(0, 212, 255, 0) 100%);
+}
+
+.sm-notes {
   width: calc(50% - (1.25rem/2));
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.desc-display{
-  --titlemax-lines: 4;
+.desc-display {
+  --titlemax-lines: 6;
 
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: var(--titlemax-lines);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--titlemax-lines);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
 }
