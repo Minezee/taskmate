@@ -6,10 +6,14 @@ const PrivateRoutes = () => {
 
     return (
         token ? 
-        <>  
-            <Navbar />
-            <Outlet />
-        </> 
+        <div className='flex flex-col lg:flex-row w-full'>  
+            <div className='w-full lg:w-1/4'>
+                <Navbar />
+            </div>
+            <div className='flex-1'>
+                <Outlet />
+            </div>
+        </div> 
         :
         <Navigate to={'/signin'} />
     );

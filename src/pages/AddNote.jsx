@@ -9,12 +9,11 @@ const AddNote = () => {
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
     const token = sessionStorage.token;
-    
+
     const modules = {
         toolbar: [
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image']
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }]
         ],
     }
 
@@ -29,7 +28,7 @@ const AddNote = () => {
                 },
                 body: JSON.stringify({ title, description }),
             });
-            if(response.ok){
+            if (response.ok) {
                 navigate('/')
             }
         } catch (error) {
@@ -38,34 +37,34 @@ const AddNote = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className='px-4 flex flex-col gap-4 mt-12 h-screen'>
-            <label htmlFor="title" className='text-3xl font-semibold'>Judul :</label>
-            <input 
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Masukan Judul"
-            maxLength={15}
-            onKeyUp={(e) => {
-                if(e.target.value.length >= 15) {
-                    e.target.value = e.target.value.slice(0, 15)
-                }
-            }}
-            className='w-full border-[1px] border-gray-300 px-8 py-5 text-[1.7rem]'/>
+        <form onSubmit={handleSubmit} className='px-4 flex flex-col gap-4 pt-12 h-screen'>
+            <label htmlFor="title" className='text-3xl lg:text-xl font-semibold'>Judul :</label>
+            <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Masukan Judul"
+                maxLength={15}
+                onKeyUp={(e) => {
+                    if (e.target.value.length >= 15) {
+                        e.target.value = e.target.value.slice(0, 15)
+                    }
+                }}
+                className='w-full border-[1px] border-gray-300 px-8 py-5 lg:px-4 lg:py-2 text-[1.7rem] lg:text-lg' />
 
-            <div className='mt-10'>
-                <label htmlFor="description" className='text-2xl font-semibold'>Deskripsi :</label>
+            <div className='mt-10 lg:mt-4'>
+                <label htmlFor="description" className='text-2xl lg:text-xl font-semibold'>Deskripsi :</label>
                 <ReactQuill
                     value={description}
                     onChange={(value) => setDescription(value)}
                     modules={modules}
                     placeholder="Masukan Deskripsi"
-                    className='mt-5'
+                    className='mt-5 lg:mt-3 quill'
                 />
             </div>
 
             <div className='flex items-center justify-center mt-10'>
-                <button type='submit' className='text-3xl px-8 py-4 bg-blue-800 font-semibold text-white rounded-full'>Buat Note</button>
+                <button type='submit' className='text-3xl lg:text-lg px-8 lg:px-5 py-4 lg:py-3 bg-blue-800 font-semibold text-white rounded-full border-[1px] border-black'>Buat Note</button>
             </div>
         </form>
     );

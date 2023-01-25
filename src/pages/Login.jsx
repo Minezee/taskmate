@@ -29,9 +29,9 @@ const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="md:flex-1 mx-auto bg-white flex flex-col justify-center items-center text-left">
-            <h3 className="text-6xl font-bold mb-16 text-blue-500">Masuk</h3>
-            <div className="flex flex-col gap-4 w-[80vw] text-2xl">
+        <form onSubmit={handleSubmit} className="md:flex-1 mx-auto bg-white flex flex-col justify-center lg:justify-evenly items-center text-left lg:px-8">
+            <h3 className="text-6xl lg:text-4xl font-bold mb-16 lg:mb-0 text-blue-800">Masuk</h3>
+            <div className="flex flex-col gap-4 lg:gap-3 text-3xl lg:text-base 2xl:text-lg lg:w-full">
                 <label htmlFor="email" className="ml-2">
                     Email:
                 </label>
@@ -40,9 +40,9 @@ const LoginForm = () => {
                     value={email}
                     placeholder="Masukan Email"
                     onChange={(event) => setEmail(event.target.value)}
-                    className="rounded-full py-5 md:w-[50vh] px-6 bg-blue-50 text-xl"
+                    className="rounded-full py-5 lg:py-4 px-5 bg-blue-50"
                 />
-                <label htmlFor="password" className="ml-2 mt-4">
+                <label htmlFor="password" className="ml-2 mt-4 lg:mt-2">
                     Password:
                 </label>
                     <input
@@ -50,12 +50,14 @@ const LoginForm = () => {
                         value={password}
                         placeholder="Masukan Password"
                         onChange={(event) => setPassword(event.target.value)}
-                        className="rounded-full py-5 md:w-[50vh] px-6 bg-blue-50 text-xl"
+                        className="rounded-full py-5 lg:py-4 px-5 bg-blue-50"
                     />
                     {errMsg && <p className="text-red-500 text-lg mt-4 mx-auto">{errMsg}</p>}
             </div>
-            <button type="submit" className="auth-button">Sign In</button>
-            <p className="text-lg mt-4">belum punya akun? <Link className="text-blue-400 underline hover:opacity-80" to={'/register'}>buat akun</Link></p>
+            <div className="flex flex-col items-center justify-center gap-4">
+                <button type="submit" className="auth-button">Sign In</button>
+                <p className="text-2xl lg:text-sm">belum punya akun? <Link className="text-blue-400 underline hover:opacity-80" to={'/register'}>buat akun</Link></p>
+            </div>
         </form>
     );
 }
@@ -64,8 +66,8 @@ const Login = () => {
     const token = localStorage.token;
     if(token) return <Navigate to={'/account'} />
     return (
-        <div className="flex flex-row w-full h-screen my-auto md:h-auto">
-            <img src={loginBg} alt="" className="w-3/5 hidden md:block" />
+        <div className="flex flex-row w-screen h-screen my-auto md:h-auto">
+            <img src={loginBg} alt="" className="w-3/5 h-screen hidden md:block" />
             <LoginForm />
         </div>
     );
