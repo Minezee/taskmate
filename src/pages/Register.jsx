@@ -30,7 +30,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="md:flex-1 mx-auto bg-white flex flex-col justify-center lg:justify-evenly items-center text-left lg:px-8">
+        <form onSubmit={handleSubmit} className="lg:flex-1 mx-auto bg-white flex flex-col justify-center lg:justify-evenly items-center text-left lg:px-8">
             <h3 className="text-6xl lg:text-4xl font-bold mb-16 lg:mb-0 text-blue-800">Daftar</h3>
             <div className="flex flex-col gap-4 lg:gap-3 text-3xl lg:text-base 2xl:text-lg lg:w-full">
                 <label htmlFor="name" className="ml-2">
@@ -41,6 +41,7 @@ const RegisterForm = () => {
                     value={name}
                     placeholder="Masukan Email"
                     onChange={(event) => setName(event.target.value)}
+                    required
                     className="rounded-full py-5 lg:py-4 px-5 bg-blue-50"
                 />
                 <label htmlFor="email" className="ml-2">
@@ -51,6 +52,7 @@ const RegisterForm = () => {
                     value={email}
                     placeholder="Masukan Email"
                     onChange={(event) => setEmail(event.target.value)}
+                    required
                     className="rounded-full py-5 lg:py-4 px-5 bg-blue-50"
                 />
                 <label htmlFor="password" className="ml-2 mt-4 lg:mt-2">
@@ -77,8 +79,8 @@ const Register = () => {
     const token = localStorage.token;
     if (token) return <Navigate to={'/account'} />
     return (
-        <div className="flex flex-row w-screen h-screen my-auto md:h-auto">
-            <img src={loginBg} alt="" className="w-3/5 h-screen hidden md:block" />
+        <div className="flex flex-row w-screen h-screen my-auto lg:h-auto">
+            <img src={loginBg} alt="" className="w-3/5 h-screen hidden lg:block" />
             <RegisterForm />
         </div>
     );

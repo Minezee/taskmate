@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const AddNote = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [errMsg, setErrMsg] = useState("");
     const navigate = useNavigate();
     const token = sessionStorage.token;
 
@@ -20,19 +21,24 @@ const AddNote = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:5000/user/add_notes", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `${token}`
-                },
-                body: JSON.stringify({ title, description }),
-            });
-            if (response.ok) {
-                navigate('/')
+            if (description.length > 0 && title.length > 0) {
+                const response = await fetch("http://localhost:5000/user/add_notes", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `${token}`
+                    },
+                    body: JSON.stringify({ title, description }),
+                });
+                if (response.ok) {
+                    setErrMsg("")
+                    navigate('/')
+                }
+            } else {
+                setErrMsg("Harap isi semua field")
             }
         } catch (error) {
-            console.log(error)
+            setErrMsg("Terjadi kesalahan, coba lagi nanti")
         }
     };
 
@@ -59,11 +65,14 @@ const AddNote = () => {
                     onChange={(value) => setDescription(value)}
                     modules={modules}
                     placeholder="Masukan Deskripsi"
+                    required
                     className='mt-5 lg:mt-3 quill'
                 />
             </div>
 
-            <div className='flex items-center justify-center mt-10'>
+            <p className={`${errMsg ? "opacity-100" : "opacity-0"} text-center text-red-600 mt-8`}>{errMsg}</p>
+
+            <div className='flex items-center justify-center'>
                 <button type='submit' className='text-3xl lg:text-lg px-8 lg:px-5 py-4 lg:py-3 bg-blue-800 font-semibold text-white rounded-full border-[1px] border-black'>Buat Note</button>
             </div>
         </form>
