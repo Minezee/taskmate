@@ -14,7 +14,7 @@ const Home = () => {
     const welcomeText = text[randomText]
 
     useEffect(() => {
-        fetch('http://localhost:5000/user/data', {
+        fetch('https://taskmates-api.vercel.app/user/data', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${token}`
@@ -27,7 +27,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user/get_notes', {
+        fetch('https://taskmates-api.vercel.app/user/get_notes', {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,8 @@ const Home = () => {
                 <h3 className="py-8 font-semibold text-3xl flex items-center text-blue-800">All Notes <img src={notes} alt="" className="w-12 h-12" /></h3>
                 <div className="flex flex-row flex-wrap w-full mt-8 mb-24 lg:mt-0 gap-5">
                     {allNotes ? allNotes.map((note) => (
-                        <NoteCard 
+                        <NoteCard
+                        key={note._id}
                         title={note.title} 
                         description={note.description}
                         id={note._id}

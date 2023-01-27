@@ -31,7 +31,7 @@ const ViewNote = () => {
 
     useEffect(() => {
         if (id) {
-            fetch(`http://localhost:5000/user/view_notes/${id}`, {
+            fetch(`https://taskmates-api.vercel.app/user/view_notes/${id}`, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const ViewNote = () => {
         e.preventDefault();
         try {
             if (title.length > 0 && description.length > 0) {
-                const response = await fetch(`http://localhost:5000/user/update_notes/${id}`, {
+                const response = await fetch(`https://taskmates-api.vercel.app/user/update_notes/${id}`, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const ViewNote = () => {
     const handleDelete = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/user/delete_notes/${id}`, {
+            const response = await fetch(`https://taskmates-api.vercel.app/user/delete_notes/${id}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
