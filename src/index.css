@@ -29,16 +29,16 @@ html {
   @apply text-[8px] lg:text-[16px]
 }
 
-ol {
+.note-container ol {
   list-style: none;
   counter-reset: my-counter;
 }
 
-ul {
+.note-container ul {
   list-style-type: disc;
 }
 
-li::before {
+.note-container li::before {
   content: counter(my-counter) ". ";
   counter-increment: my-counter;
 }

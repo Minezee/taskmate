@@ -1,13 +1,46 @@
 import { NavLink } from "react-router-dom"
+import { BsStar, BsStarFill } from "react-icons/bs"
+import { useState } from "react";
 
-const NoteCard = ({title, description, id, date}) => {
+const NoteCard = ({ title, description, favorite, id, date }) => {
+    const [isFavorite, setIsFavorite] = useState(favorite);
+    const token = sessionStorage.token;
+
+    const favoriteNote = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`https://taskmates-api.vercel.app/user/favorite_notes/${id}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
+                }
+            });
+
+            if(response.ok){
+                setIsFavorite(!isFavorite);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
     return (
-        <NavLink to={`/view-note/${id}`} className="bg-white hover:bg-gray-100 h-80 lg:h-72 w-[calc(50%-(1.25rem/2))] lg:w-[calc(33.3333%-(1.75rem/2))] p-3 rounded-2xl box-shadow relative">
-            <h1 className="text-center font-bold text-[2rem] lg:text-xl desc-display">{title}</h1>
-            <div className="text-2xl lg:text-lg my-4">
-                <p className="desc-display" dangerouslySetInnerHTML={{ __html: description }}></p>
+        <NavLink to={`/view-note/${id}`} key={title} className="bg-white hover:bg-gray-100 h-80 lg:h-72 w-[calc(50%-(1.25rem/2))] lg:w-[calc(33.3333%-(1.75rem/2))] p-3 rounded-2xl box-shadow flex flex-col justify-between">
+            <div>
+                <h1 className="text-center font-bold text-[2rem] lg:text-xl 2xl:text-2xl">{title}</h1>
+                <p className="desc-display text-2xl lg:text-lg 2xl:text-xl my-4" dangerouslySetInnerHTML={{ __html: description }}></p>
             </div>
-            <p className="absolute bottom-0 right-0 m-4">{date}</p>
+            <div className="flex justify-between items-center">
+                <button onClick={(e) => favoriteNote(e)} className="text-2xl lg:text-xl 2xl:text-2xl">
+                    {isFavorite ?
+                        <BsStarFill className="text-yellow-400"/>
+                    :
+                        <BsStar className="text-blue-800"/>
+                    }
+                </button>
+                <p className="text-base 2xl:text-lg">{date}</p>
+            </div>
         </NavLink>
     )
 }

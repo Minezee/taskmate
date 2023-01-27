@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
         :
         <>
-          <div className='flex justify-between w-full px-4 py-8 bg-gray-100 text-blue-800 text-[2.5rem]'>
+          <div className='flex justify-between w-full p-8 bg-gray-100 text-blue-800 text-[2.75rem]'>
             <NavLink to={'/'} className='font-bold'>Taskmate</NavLink>
             <button onClick={() => setIsOpen(!isOpen)}>
               {isOpen ?
