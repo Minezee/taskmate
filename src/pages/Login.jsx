@@ -55,7 +55,7 @@ const LoginForm = () => {
                     />
                     {errMsg && <p className="text-red-500 text-lg mt-4 mx-auto">{errMsg}</p>}
             </div>
-            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center mt-8 gap-4">
                 <button type="submit" className="auth-button">Sign In</button>
                 <p className="text-2xl lg:text-sm">belum punya akun? <Link className="text-blue-400 underline hover:opacity-80" to={'/register'}>buat akun</Link></p>
             </div>
