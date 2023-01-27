@@ -22,7 +22,7 @@ const AddNote = () => {
         event.preventDefault();
         try {
             if (description.length > 0 && title.length > 0) {
-                const response = await fetch("https://taskmates-api.vercel.app/user/add_notes", {
+                const response = await fetch("https://taskmates-api.vercel.app/notes/add", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',

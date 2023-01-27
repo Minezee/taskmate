@@ -3,12 +3,14 @@ import { notesHome } from "../assets";
 
 const Header = () => {
     const [user, setUser] = useState(null);
+    const [randomText, setRandomText] = useState("")
     const token = sessionStorage.token;
-    const text = ["Good morning, how are you today?", "Hey there, how have you been?", "Nice to see you again, how has your day been so far?", "Good to see you, how's everything going?"]
-    const randomText = Math.floor(Math.random() * 4);
-    const welcomeText = text[randomText]
 
     useEffect(() => {
+        const text = ["Good morning, how are you today?", "Hey there, how have you been?", "Nice to see you again, how has your day been so far?", "Good to see you, how's everything going?"]
+        const random = Math.floor(Math.random() * 4);
+        const welcomeText = text[random]
+        setRandomText(welcomeText)
         fetch('https://taskmates-api.vercel.app/user/data', {
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ const Header = () => {
                 <div className="bg-cover h-64 lg:h-48 w-full relative rounded-lg lg:rounded-none box-shadow" style={{ backgroundImage: `url(${notesHome})` }}>
                     <div className="bg-shadow w-full h-2/3 absolute bottom-0 rounded-lg lg:rounded-none flex flex-col justify-end p-4 text-white">
                         <h3 className="font-semibold text-3xl">Welcome, {user}</h3>
-                        <p className="text-2xl lg:text-lg font-medium lg:font-thin">{welcomeText}</p>
+                        <p className="text-2xl lg:text-lg font-medium lg:font-thin">{randomText}</p>
                     </div>
                 </div>
                 :
