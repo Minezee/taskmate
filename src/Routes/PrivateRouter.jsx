@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
 
 const PrivateRoutes = () => {
     const token = sessionStorage.token;

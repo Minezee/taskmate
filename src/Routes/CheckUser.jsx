@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import BasicNav from './BasicNav';
+import { BasicNav } from '../components';
 
 const CheckUser = () => {
     const token = sessionStorage.token
