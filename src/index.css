@@ -51,6 +51,30 @@ html {
   @apply bg-blue-800 text-3xl lg:text-lg text-white rounded-full px-10 lg:px-5 py-4 lg:py-2 sm:my-12 lg:my-0 border-[1px] border-gray-400 hover:opacity-90
 }
 
+.color{
+  @apply h-10 lg:h-6 w-10 lg:w-6 rounded-full border-[1px]
+}
+
+.yellow{
+  background-color: rgb(254 240 138)
+}
+
+.blue{
+  background-color: rgb(191 219 254)
+}
+
+.red{
+  background-color: rgb(254 202 202)
+}
+
+.green{
+  background-color: rgb(187 247 208)
+}
+
+.white{
+  background-color: white;
+}
+
 .bg-img{
     background: url(./assets/notesHome.png) no-repeat center center fixed; 
     -webkit-background-size: cover;

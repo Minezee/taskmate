@@ -58,6 +58,7 @@ const Favorite = () => {
                                             title={note.title}
                                             description={note.description}
                                             favorite={note.favorite}
+                                            color={note.color}
                                             id={note._id}
                                             date={note.createdAt}
                                             setNoteId={(noteId) => setNoteId(noteId)}
