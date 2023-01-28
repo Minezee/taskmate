@@ -91,7 +91,7 @@ const AddNote = () => {
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Masukan Judul"
+                    placeholder="Masukan Judul (maks. 15 huruf)"
                     maxLength={15}
                     onKeyUp={(e) => {
                         if (e.target.value.length >= 15) {
