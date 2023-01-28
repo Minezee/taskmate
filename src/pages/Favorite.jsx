@@ -48,7 +48,7 @@ const Favorite = () => {
                 <Header />
                 <div className="bg-white px-8">
                     <h3 className="py-8 font-semibold text-3xl flex items-center text-blue-800">Favorite Notes <img src={notes} alt="" className="w-12 h-12" /></h3>
-                    <div className="flex flex-row flex-wrap w-full mt-8 mb-24 lg:mt-0 gap-5 note-container">
+                    <div className="flex flex-row flex-wrap w-full mt-8 mb-24 lg:mt-0 gap-5">
                         {favNotes ?
                             favNotes?.filter(note => note.favorite).length > 0 ?
                                 favNotes?.filter(note => note.favorite).map((note) => {

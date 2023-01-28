@@ -34,13 +34,17 @@ html {
   counter-reset: my-counter;
 }
 
-.note-container ul {
-  list-style-type: disc;
-}
-
-.note-container li::before {
+.note-container ol > li::before {
   content: counter(my-counter) ". ";
   counter-increment: my-counter;
+}
+
+.note-container ul {
+  list-style: none;
+}
+
+.note-container ul > li::before {
+  content: "• ";
 }
 
 .auth-button {
