@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import { Navbar } from './components'
-import { Home, Login, Register, AddNote, ViewNote, Error, Todo, Favorite } from './pages'
+import { Navbar} from './components'
+import { Home, Login, Register, AddNote, ViewNote, Error, Todo, Favorite, NotFound } from './pages'
 import PrivateRoutes from './Routes/PrivateRouter';
 import CheckUser from './Routes/CheckUser';
 import { useLocation, Outlet } from 'react-router-dom';
@@ -26,6 +26,7 @@ const App = () => {
               <Route path='/signin' element={<Login />} />
               <Route path='/register' element={<Register />} />
             </Route>
+            
             {/* Private route for unauth user */}
             <Route element={<PrivateRoutes />}>
               <Route path='/' element={<Home />} />
@@ -35,7 +36,10 @@ const App = () => {
               <Route path='/view-note/:id' element={<ViewNote />} />
             </Route>
 
+            {/* Error route */}
             <Route path='/error' element={<Error />} />
+            {/* 404 Not Found route */}
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
     </div>

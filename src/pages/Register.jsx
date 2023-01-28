@@ -30,7 +30,7 @@ const RegisterForm = () => {
                 setErrMsg(data.msg)
             }
         } catch (error) {
-            console.log(error)
+            setErrMsg("Terjadi kesalahan, coba lagi nanti")
         }
     };
 

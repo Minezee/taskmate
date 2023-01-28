@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { notes } from "../assets";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaPlus } from 'react-icons/fa'
 import { FavNoteCard, NoteDummy, Header, FetchLoad } from "../components";
 
@@ -9,6 +9,7 @@ const Favorite = () => {
     const [favNotes, setFavNotes] = useState(null);
     const [isFetching, setIsFetching] = useState(false)
     const [noteId, setNoteId] = useState(null)
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://taskmates-api.vercel.app/notes/get', {
@@ -22,6 +23,7 @@ const Favorite = () => {
             .then(notesData => {
                 setFavNotes(notesData.notes);
             })
+            .catch(err => navigate('/error'))
     }, []);
 
     useEffect(() => {
@@ -39,6 +41,7 @@ const Favorite = () => {
                     setFavNotes(notesData)
                     setIsFetching(false)
                 })
+                .catch(err => navigate('/error'))
         }
     }, [noteId]);
 

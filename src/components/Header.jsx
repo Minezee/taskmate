@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { notesHome } from "../assets";
 
 const Header = () => {
     const [user, setUser] = useState(null);
     const [randomText, setRandomText] = useState("")
     const token = sessionStorage.token;
+    const navigate = useNavigate();
 
     useEffect(() => {
         const text = ["Good morning, how are you today?", "Hey there, how have you been?", "Nice to see you again, how has your day been so far?", "Good to see you, how's everything going?"]
         const random = Math.floor(Math.random() * 4);
-        const welcomeText = text[random]
+        const welcomeText = text[random];
         setRandomText(welcomeText)
         fetch('https://taskmates-api.vercel.app/user/data', {
             headers: {
@@ -21,6 +23,7 @@ const Header = () => {
             .then(data => {
                 setUser(data.name);
             })
+            .catch(err => navigate('/error'))
     }, []);
 
     return (

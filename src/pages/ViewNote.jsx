@@ -15,7 +15,7 @@ const ViewNote = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isFetch, setIsFetch] = useState(false);
-    const noteColor = ["white ", "red", "yellow", "blue", "green"];
+    const noteColor = ["white", "red", "yellow", "blue", "green"];
     const deviceWidth = window.innerWidth;
     const { id } = useParams();
     const navigate = useNavigate();
@@ -56,7 +56,7 @@ const ViewNote = () => {
                 .then(data => {
                     setNote(data.note);
                 })
-                .catch(error => console.log(error));
+                .catch(error => navigate('/error'));
         }
     }, [id]);
 
@@ -91,7 +91,7 @@ const ViewNote = () => {
                 setErrMsg("Harap isi semua field")
             }
         } catch (error) {
-            console.log(error)
+            setErrMsg("Terjadi kesalahan, coba lagi nanti")
         }
     };
 

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { notes } from "../assets";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaPlus } from 'react-icons/fa'
 import { NoteCard, NoteDummy, Header } from "../components";
 
 const Home = () => {
     const token = sessionStorage.getItem('token')
     const [allNotes, setAllNotes] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://taskmates-api.vercel.app/notes/get', {
@@ -17,9 +18,8 @@ const Home = () => {
             }
         })
             .then(res => res.json())
-            .then(notesData => {
-                setAllNotes(notesData.notes);
-            })
+            .then(notesData => setAllNotes(notesData.notes))
+            .catch(err => navigate('/error'))
     }, []);
 
     return (

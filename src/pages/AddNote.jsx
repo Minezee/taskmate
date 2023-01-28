@@ -1,7 +1,7 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // import css
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FetchLoad } from '../components';
 import { MdOutlineColorLens } from 'react-icons/md'
 import { motion } from 'framer-motion';
@@ -9,11 +9,11 @@ import { motion } from 'framer-motion';
 const AddNote = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [color, setColor] = useState("");
+    const [color, setColor] = useState("white");
     const [errMsg, setErrMsg] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [isFetch, setIsFetch] = useState(false);
-    const noteColor = ["white ", "red", "yellow", "blue", "green"];
+    const noteColor = ["white", "red", "yellow", "blue", "green"];
     const deviceWidth = window.innerWidth;
     const navigate = useNavigate();
     const token = sessionStorage.token;
@@ -25,7 +25,7 @@ const AddNote = () => {
         dec = 40;
     }else{
         translateX = 145;
-        dec = 32;
+        dec = 30;
     }
 
     const modules = {
@@ -52,6 +52,9 @@ const AddNote = () => {
                     setErrMsg("")
                     setIsFetch(false)
                     navigate('/')
+                }else{
+                    setIsFetch(false)
+                    setErrMsg("Terjadi kesalahan, coba lagi nanti")
                 }
             } else {
                 setErrMsg("Harap isi semua field")
