@@ -10,6 +10,7 @@ const ViewNote = () => {
     const [errMsg, setErrMsg] = useState("")
     const [note, setNote] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isFetch, setIsFetch] = useState(false)
     const { id } = useParams();
     const navigate = useNavigate();
     const token = sessionStorage.token;
@@ -64,6 +65,7 @@ const ViewNote = () => {
         e.preventDefault();
         try {
             if (title.length > 0 && description.length > 0) {
+                setIsFetch(true)
                 const response = await fetch(`https://taskmates-api.vercel.app/notes/update/${id}`, {
                     method: "PUT",
                     headers: {
@@ -72,6 +74,7 @@ const ViewNote = () => {
                     },
                     body: JSON.stringify({ title, description }),
                 });
+                setIsFetch(false)
                 if (response.ok) {
                     navigate('/')
                 }

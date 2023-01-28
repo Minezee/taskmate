@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import { Navbar } from '../components';
 
 const PrivateRoutes = () => {
     const token = sessionStorage.token;
@@ -7,7 +7,7 @@ const PrivateRoutes = () => {
     return (
         token ? 
         <div className='flex flex-col lg:flex-row w-full'>  
-            <div className='w-full lg:w-1/4'>
+            <div className='w-full lg:w-[21rem]'>
                 <Navbar />
             </div>
             <div className='flex-1'>

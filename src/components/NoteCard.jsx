@@ -23,7 +23,7 @@ const NoteCard = ({ title, description, favorite, id, date }) => {
     }
     
     return (
-        <NavLink to={`/view-note/${id}`} key={title} className="bg-white hover:bg-gray-100 h-80 lg:h-72 w-[calc(50%-(1.25rem/2))] lg:w-[calc(33.3333%-(1.75rem/2))] p-3 rounded-2xl box-shadow flex flex-col justify-between">
+        <NavLink to={`/view-note/${id}`} key={title} className="bg-white hover:bg-gray-100 h-80 lg:h-72 w-[calc(50%-(1.25rem/2))] md:w-[calc(33.3333%-(1.75rem/2))] 2xl:w-[calc(25%-(1.25rem/1))] p-3 rounded-2xl box-shadow flex flex-col justify-between">
             <div>
                 <h1 className="text-center font-bold text-[2rem] lg:text-xl 2xl:text-2xl">{title}</h1>
                 <p className="desc-display text-2xl lg:text-lg 2xl:text-xl my-2" dangerouslySetInnerHTML={{ __html: description }}></p>
