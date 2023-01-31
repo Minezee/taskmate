@@ -102,15 +102,15 @@ const AddTodo = () => {
                     className='w-full border-[1px] border-gray-300 px-8 py-5 lg:px-4 lg:py-2 text-[1.7rem] lg:text-lg' />
                     <label htmlFor="todo" className='text-lg lg:text-base'>Todo :</label>
                 {targets.map((target, index) => (
-                    <div key={index} className="flex items-center mx-1">
+                    <div key={index} className="flex items-center mx-1 gap-5">
                         <input type="checkbox" className="h-7 lg:h-5 w-7 lg:w-5 mt-3 md:mt-0 cursor-pointer" onChange={(e) => handleCheck(e, index)} />
                         <input
-                        type="text"
-                        name={"todo-" + index}
-                        className="border-b-[1px] border-gray-300 py-2 lg:px-2 lg:py-1 w-1/2 text-2xl text-[1.65rem]"
-                        value={target.name}
-                        onChange={(e) => handleChange(e, index)}
-                        onKeyDown={(e) => handleKeyDown(e, index)}/>
+                                type="text"
+                                name={"todo-" + index}
+                                className="border-b-[1px] border-gray-300 py-2 lg:px-2 lg:py-1 w-1/2 text-3xl md:text-lg 2xl:text-2xl"
+                                value={target.name}
+                                onChange={(e) => handleChange(e, index)}
+                                onKeyDown={(e) => handleKeyDown(e, index)} />
                     </div>
                 ))}
                 <p className={`${errMsg ? "opacity-100" : "opacity-0"} text-center text-red-600 mt-8`}>{errMsg}</p>
