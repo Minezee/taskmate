@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { notes } from "../assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaPlus } from 'react-icons/fa'
-import { FavNoteCard, NoteDummy, Header, FetchLoad } from "../components";
+import { FavNoteCard, CardDummy, Header, FetchLoad } from "../components";
+import { Masonry } from "@mui/lab";
 
 const Favorite = () => {
     const token = sessionStorage.getItem('token');
@@ -50,8 +51,8 @@ const Favorite = () => {
             <div className='bg-gray-100'>
                 <Header />
                 <div className="bg-white px-8">
-                    <h3 className="py-8 font-semibold text-3xl flex items-center text-blue-800">Favorite Notes <img src={notes} alt="" className="w-12 h-12" /></h3>
-                    <div className="flex flex-row flex-wrap w-full mt-8 mb-24 lg:mt-0 gap-5">
+                    <h3 className="py-8 font-semibold text-3xl flex items-center text-blue-800">Favorite Notes <img src={notes} alt="notes" className="w-12 h-12" /></h3>
+                    <Masonry columns={{ xs: 2, sm: 3, md: 3, xl: 4 }} spacing={2}>
                         {favNotes ?
                             favNotes?.filter(note => note.favorite).length > 0 ?
                                 favNotes?.filter(note => note.favorite).map((note) => {
@@ -74,9 +75,9 @@ const Favorite = () => {
                                     <h4 className='text-2xl font-semibold text-gray-700'>Tidak Ada Note Favorit! Tambahkan terlebih dahulu</h4>
                                 </div>
                             :
-                            <NoteDummy />
+                            <CardDummy />
                         }
-                    </div>
+                    </Masonry>
                 </div>
                 <NavLink className="bg-blue-800 h-24 w-24 lg:h-16 lg:w-16 rounded-full fixed bottom-10 right-10 flex items-center justify-center text-white z-30 hover:opacity-90" to={'/add-note'}><FaPlus className="text-3xl" /></NavLink>
             </div>

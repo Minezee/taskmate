@@ -1,6 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
-import { Navbar} from './components'
-import { Home, Login, Register, AddNote, ViewNote, Error, Todo, Favorite, NotFound } from './pages'
+import { 
+  Home,
+  Login,
+  Register,
+  AddNote,
+  ViewNote,
+  Error,
+  Todo,
+  Favorite,
+  NotFound,
+  AddTodo,
+  ViewTodo,
+} from './pages'
 import PrivateRoutes from './Routes/PrivateRouter';
 import CheckUser from './Routes/CheckUser';
 import { useLocation, Outlet } from 'react-router-dom';
@@ -32,13 +43,14 @@ const App = () => {
               <Route path='/' element={<Home />} />
               <Route path='/favorites' element={<Favorite />} />
               <Route path='/todo' element={<Todo />} />
+              <Route path='/view-todo/:id' element={<ViewTodo />} />
               <Route path='/add-note' element={<AddNote />} />
               <Route path='/view-note/:id' element={<ViewNote />} />
+              <Route path='/add-todo' element={<AddTodo />} />
             </Route>
 
             {/* Error route */}
             <Route path='/error' element={<Error />} />
-            {/* 404 Not Found route */}
             <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>

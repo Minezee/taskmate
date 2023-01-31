@@ -50,10 +50,10 @@ const Navbar = () => {
             <div className='w-full h-[0.5px] bg-white' />
             <div className='flex flex-col gap-8 text-xl 2xl:text-2xl ml-4'>
               {navMenu.map((menu) => (
-                <div className='flex items-center gap-5' key={menu.name}>
-                  <menu.icon />
-                  <NavLink to={menu.direct}>{menu.name}</NavLink>
-                </div>
+                  <NavLink to={menu.direct} className='flex items-center gap-5' key={menu.name}>
+                    <menu.icon />
+                    {menu.name}
+                  </NavLink>
               ))}
             </div>
           </div>
@@ -89,16 +89,16 @@ const Navbar = () => {
       </nav>
 
       {isModalOpen && (
-                <div className="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-black/50 z-50">
-                    <div className="bg-gray-100 h-1/4 lg:h-1/2 w-full lg:w-2/5 mx-16 rounded-2xl flex flex-col items-center justify-evenly px-4">
-                        <p className='text-3xl lg:text-2xl 2xl:text-3xl font-bold text-center'>Apakah kamu yakin ingin keluar ?</p>
-                        <div className="flex gap-10 text-white text-2xl lg:text-lg 2xl:text-2xl font-semibold">
-                            <button className='bg-red-500 min-w-[9rem] lg:min-w-[7rem] 2xl:min-w-[9rem] px-8 lg:px-4 2xl:px-8 py-4 lg:py-3 2xl:py-4 rounded-lg border-[1px] border-black' onClick={() => setIsModalOpen(false)}>No</button>
-                            <button className='bg-blue-800 min-w-[9rem] lg:min-w-[7rem] 2xl:min-w-[9rem] px-8 lg:px-4 2xl:px-8 py-4 lg:py-3 2xl:py-4 rounded-lg border-[1px] border-black' onClick={handleLogout}>Yes</button>
-                        </div>
-                    </div>
-                </div>
-            )}
+        <div className="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-black/50 z-50">
+          <div className="bg-gray-100 h-1/4 lg:h-1/2 w-full lg:w-2/5 mx-16 rounded-2xl flex flex-col items-center justify-evenly px-4">
+            <p className='text-3xl lg:text-2xl 2xl:text-3xl font-bold text-center'>Apakah kamu yakin ingin keluar ?</p>
+            <div className="flex gap-10 text-white text-2xl lg:text-lg 2xl:text-2xl font-semibold">
+              <button className='bg-red-500 min-w-[9rem] lg:min-w-[7rem] 2xl:min-w-[9rem] px-8 lg:px-4 2xl:px-8 py-4 lg:py-3 2xl:py-4 rounded-lg border-[1px] border-black' onClick={() => setIsModalOpen(false)}>No</button>
+              <button className='bg-blue-800 min-w-[9rem] lg:min-w-[7rem] 2xl:min-w-[9rem] px-8 lg:px-4 2xl:px-8 py-4 lg:py-3 2xl:py-4 rounded-lg border-[1px] border-black' onClick={handleLogout}>Yes</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
