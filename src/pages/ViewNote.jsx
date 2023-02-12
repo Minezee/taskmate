@@ -152,6 +152,7 @@ const ViewNote = () => {
                         e.target.value = e.target.value.slice(0, 15)
                     }
                 }}
+                autoComplete="off" 
                 className='w-full border-[1px] border-gray-300 px-8 py-5 lg:px-4 lg:py-2 text-[1.7rem] lg:text-lg' />
 
             <div className='mt-10 lg:mt-4'>

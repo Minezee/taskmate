@@ -71,7 +71,7 @@ const Favorite = () => {
                                 }
                                 )
                                 :
-                                <div className='flex items-center justify-center h-[50vh] w-full text-center'>
+                                <div className='flex items-center justify-center h-[50vh] text-center w-full' style={{width: "100%"}}>
                                     <h4 className='text-2xl font-semibold text-gray-700'>Tidak Ada Note Favorit! Tambahkan terlebih dahulu</h4>
                                 </div>
                             :

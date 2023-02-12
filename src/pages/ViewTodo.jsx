@@ -183,6 +183,7 @@ const ViewTodo = () => {
                             e.target.value = e.target.value.slice(0, 15)
                         }
                     }}
+                    autoComplete="off" 
                     className='w-full border-[1px] border-gray-300 px-8 py-5 lg:px-4 lg:py-2 text-[1.7rem] lg:text-lg' />
                 <label htmlFor="todo" className='text-2xl lg:text-base 2xl:text-2xl mt-10'>Todo :</label>
                 {targets.map((target, index) => (
@@ -195,7 +196,8 @@ const ViewTodo = () => {
                                 className="border-b-[1px] border-gray-300 py-2 lg:px-2 lg:py-1 w-1/2 text-3xl md:text-lg 2xl:text-2xl"
                                 value={target.name}
                                 onChange={(e) => handleChange(e, index)}
-                                onKeyDown={(e) => handleKeyDown(e, index)} />
+                                onKeyDown={(e) => handleKeyDown(e, index)}
+                                autoComplete="off" />
                             :
                             <p className="py-2 lg:px-2 lg:py-1 w-full text-3xl md:text-lg 2xl:text-2xl">{target.name}</p>
                         }

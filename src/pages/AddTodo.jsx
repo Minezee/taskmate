@@ -110,7 +110,8 @@ const AddTodo = () => {
                                 className="border-b-[1px] border-gray-300 py-2 lg:px-2 lg:py-1 w-1/2 text-3xl md:text-lg 2xl:text-2xl"
                                 value={target.name}
                                 onChange={(e) => handleChange(e, index)}
-                                onKeyDown={(e) => handleKeyDown(e, index)} />
+                                onKeyDown={(e) => handleKeyDown(e, index)}
+                                autocomplete="off"/>
                     </div>
                 ))}
                 <p className={`${errMsg ? "opacity-100" : "opacity-0"} text-center text-red-600 mt-8`}>{errMsg}</p>
