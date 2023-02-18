@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { loginBg } from "../assets";
-import { Navigate, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FetchLoad } from "../components";
 
 const LoginForm = () => {
@@ -72,8 +72,6 @@ const LoginForm = () => {
 }
 
 const Login = () => {
-    const token = localStorage.token;
-    if(token) return <Navigate to={'/account'} />
     return (
         <div className="flex flex-row w-screen h-screen my-auto lg:h-auto">
             <img src={loginBg} alt="" className="w-3/5 h-screen hidden lg:block" />

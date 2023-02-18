@@ -68,7 +68,6 @@ const AddTodo = () => {
                         setIsFetch(false)
                         navigate('/todo')
                     } else {
-                        console.log("fail")
                         setIsFetch(false)
                         setErrMsg("Terjadi kesalahan, coba lagi nanti")
                     }

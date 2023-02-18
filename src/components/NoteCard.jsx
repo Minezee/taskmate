@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { BsStar, BsStarFill } from "react-icons/bs"
 import { useState } from "react";
 
 const NoteCard = ({ title, description, favorite, color, id, date }) => {
     const [isFavorite, setIsFavorite] = useState(favorite);
     const token = sessionStorage.token;
+    const navigate = useNavigate();
 
     const favoriteNote = async (e) => {
         e.preventDefault();
@@ -18,7 +19,7 @@ const NoteCard = ({ title, description, favorite, color, id, date }) => {
                 }
             });
         } catch (error) {
-            console.log(error)
+            navigate('error')
         }
     }
     

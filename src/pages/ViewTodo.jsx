@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FetchLoad, Loading } from "../components";
-import { useParams } from "react-router-dom";
 
 const ViewTodo = () => {
     const [todo, setTodo] = useState(null);
@@ -127,7 +126,7 @@ const ViewTodo = () => {
                 setIsFetch(false)
             }
         } catch (error) {
-            console.log(error)
+            navigate('/error')
         }
     }
 
@@ -150,7 +149,6 @@ const ViewTodo = () => {
                         setIsFetch(false)
                         navigate('/todo')
                     } else {
-                        console.log("fail")
                         setIsFetch(false)
                         setErrMsg("Terjadi kesalahan, coba lagi nanti")
                     }

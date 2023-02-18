@@ -75,7 +75,7 @@ const RegisterForm = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center mt-8 gap-4">
                     <button type="submit" className="auth-button">Sign Up</button>
-                    <p className="text-2xl lg:text-sm">sudah punya akun? <Link className="text-blue-400 underline hover:opacity-80" to={'/signin'}>masuk</Link></p>
+                    <p className="text-2xl lg:text-sm">sudah punya akun? <Link className="text-blue-400 underline hover:opacity-80" to={'/signin'}>buat akun</Link></p>
                 </div>
             </form>
 
